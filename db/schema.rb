@@ -10,10 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_15_165810) do
+ActiveRecord::Schema.define(version: 2021_12_26_192458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comics", force: :cascade do |t|
+    t.string "title"
+    t.string "author"
+    t.string "icon"
+    t.string "cover"
+    t.string "summary"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "comic_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comic_id"], name: "index_favorites_on_comic_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "publications", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id", null: false
+    t.bigint "comic_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comic_id"], name: "index_publications_on_comic_id"
+    t.index ["user_id"], name: "index_publications_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -45,4 +74,8 @@ ActiveRecord::Schema.define(version: 2021_12_15_165810) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "favorites", "comics"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "publications", "comics"
+  add_foreign_key "publications", "users"
 end
