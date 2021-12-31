@@ -10,7 +10,22 @@ class User < ActiveRecord::Base
 
   has_many :favorites, dependent: :destroy
   has_many :publications, dependent: :destroy
-  has_many :comics, through: :favorites
+  # has_many :comics, through: :favorites
   has_many :comics, through: :publications
+  # has_many :comics, ->(user) {where favorites: user.favorites}, through: :publications
+
+  def favorite_comics
+    p "favorite comics called"
+    p "-----------------------"
+    if self.favorites.length === 0
+      ids = [0]
+    else
+      ids = self.favorites.map do |f|
+        f.id
+      end
+    end 
+    # ids = ids.empty? ? [0] : ids
+    Comic.where("id IN (?)", ids)
+  end
 
 end
