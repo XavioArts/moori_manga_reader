@@ -6,6 +6,7 @@ import Protected from './pages/Protected';
 import RequireAuth from './components/RequireAuth';
 import LogIn from './pages/LogIn';
 import Layout from './components/Layout';
+import ComicsTest from './pages/ComicsTest';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/public" element={<Public/>} />
           <Route path="/login" element={<LogIn/>} />
           <Route element={<RequireAuth/>} >
+            <Route path="/test" element={<ComicsTest/>} />
             <Route path="/protected" element={<Protected/>} />
           </Route>
         </Route>

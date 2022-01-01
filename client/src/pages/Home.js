@@ -42,7 +42,7 @@ const Home = () => {
             {JSON.stringify(auth)}
             <button onClick={()=>navigate("/login")} >Log In</button>
             <button onClick={()=>auth.handleLogout(navigate)} >Log Out</button>
-            <button onClick={()=>navigate("/protected")}>User View</button>
+            <button onClick={()=>navigate("/test")}>Comics Test</button>
             <br/>
             <button onClick={getComics} >Get user comics</button>
             {comics && 
