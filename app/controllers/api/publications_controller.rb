@@ -12,7 +12,7 @@ class Api::PublicationsController < ApplicationController
         if @publication.save
             render json: @publication
         else
-            render json: {errors: @publication.errors}, status 422
+            render json: {errors: @publication.errors}, status: 422
         end
     end
     # def create
