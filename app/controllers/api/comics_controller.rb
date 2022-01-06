@@ -11,6 +11,10 @@ class Api::ComicsController < ApplicationController
         render json: current_user.favorite_comics
     end
 
+    def unfavorited
+        render json: current_user.unfavorited_comics
+    end
+
     def comics_full
         render json: Comic.all
     end

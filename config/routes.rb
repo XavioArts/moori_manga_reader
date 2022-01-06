@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :comics
     get "favorites", to: "comics#favorites"
+    get "unfavorited", to: "comics#unfavorited"
     get "comics_full", to: "comics#comics_full"
     resources :favorites
     resources :publications

@@ -5,6 +5,7 @@ import { AuthContext } from "../providers/AuthProvider";
 const ComicsTest = () => {
 
     const auth = useContext(AuthContext);
+    const [unfavComics, setUnfavComics] = useState(null);
     const [comics, setComics] = useState(null);
     const [testComic, setTestComic] = useState(null);
     const [newComic, setNewComic] = useState(null);
@@ -24,6 +25,17 @@ const ComicsTest = () => {
         } catch (err) {
             console.log(err.response)
             alert("there was an error getting comics")
+        }
+    }
+    const getUnfavComics = async (e) => {
+        e.preventDefault();
+        try {
+            let res = await axios.get("/api/unfavorited");
+            console.log(res.data);
+            setUnfavComics(res.data);
+        } catch (err) {
+            console.log(err.response)
+            alert("there was an error getting unfavorited comics")
         }
     }
     const testShow = async (e) => {
@@ -92,15 +104,38 @@ const ComicsTest = () => {
         }
     }
 
+    const renderUnfav = () => {
+        return unfavComics.map((c) => {
+            return (
+                <div>
+                    <p>Comic name: {c.title}</p>
+                    <p>id: {c.id}</p>
+                    <button onClick={()=>testFavorites(c.id)}>Add to favorites</button>
+                </div>
+            )
+        })
+    }
+
+    const testFavorites = async (id) => {
+        let fav = {comic_id: id}
+        try {
+            let res = await axios.post("/api/favorites", fav);
+            console.log(res.data);
+        } catch (err) {
+            console.log(err.response)
+            alert("there was an error making favorite")
+        }
+    }
+
     return (
         <div>
             <h1>Tests here</h1>
             <br/>
-            <button onClick={getComics} >Get all comics</button>
-            {comics && 
+            <button onClick={getUnfavComics} >Get unfav comics</button>
+            {unfavComics && 
                 <div>
                     <hr/>
-                    <p>{JSON.stringify(comics)}</p>
+                    {renderUnfav()}
                     <hr/>
                 </div>}
             <br/>

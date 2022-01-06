@@ -21,11 +21,25 @@ class User < ActiveRecord::Base
       ids = [0]
     else
       ids = self.favorites.map do |f|
-        f.id
+        f.comic_id
       end
     end 
     # ids = ids.empty? ? [0] : ids
     Comic.where("id IN (?)", ids)
+  end
+  
+  def unfavorited_comics
+    p "unfavorited comics called"
+    p "-----------------------"
+    if self.favorites.length === 0
+      ids = [0]
+    else
+      ids = self.favorites.map do |f|
+        f.comic_id
+      end
+    end 
+    # ids = ids.empty? ? [0] : ids
+    Comic.where("id NOT IN (?)", ids)
   end
 
 end
