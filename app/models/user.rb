@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 
   has_many :favorites, dependent: :destroy
   has_many :publications, dependent: :destroy
+  has_many :comments, dependent: :destroy
   # has_many :comics, through: :favorites
   has_many :comics, through: :publications
   # has_many :comics, ->(user) {where favorites: user.favorites}, through: :publications
