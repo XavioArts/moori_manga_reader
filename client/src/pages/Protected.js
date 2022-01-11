@@ -10,6 +10,7 @@ const Protected = () => {
     return (
         <div>
             <h1>Protected</h1>
+            <p>update upser here</p>
             <button onClick={()=>auth.handleLogout(navigate)} >Log Out</button>
         </div>
     );

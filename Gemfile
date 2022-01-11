@@ -25,6 +25,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
+gem 'cloudinary'
+
 # Useful lib for fake data
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
@@ -36,6 +38,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Call 'binding.pry' anywhere in the code to stop execution and get a debugger console
   gem "pry-rails"
+  gem 'dotenv-rails'
 end
 
 group :development do

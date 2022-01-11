@@ -6,6 +6,8 @@ const Register = () => {
 
     const navigate = useNavigate();
     const { handleRegister } = useContext(AuthContext);
+    const [name, setName] = useState("");
+    const [nickname, setNickname] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("");
@@ -21,6 +23,10 @@ const Register = () => {
 
     return (
         <form onSubmit={handleSubmit} >
+            <p>Name:</p>
+            <input value={name} onChange={(e)=>setName(e.target.value)} />
+            <p>Username:</p>
+            <input value={nickname} onChange={(e)=>setNickname(e.target.value)} />
             <p>Email:</p>
             <input value={email} onChange={(e)=>setEmail(e.target.value)} />
             <p>Password:</p>
