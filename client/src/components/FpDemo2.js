@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import React, { useState } from 'react';
 
 // Import React FilePond
 import { FilePond, registerPlugin } from 'react-filepond';
@@ -17,5 +16,24 @@ import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
 const FpDemo2 = () => {
-    
+
+    const [files, setFiles] = useState([]);
+
+    const handleUpdate = () => {
+        setFiles(files);
+    };
+
+    return (
+        <div>
+            <FilePond 
+                files={files}
+                onupdatefiles={handleUpdate}
+                allowMultiple={false}
+                name="files"
+                labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
+            />
+        </div>
+    )
 }
+
+export default FpDemo2;

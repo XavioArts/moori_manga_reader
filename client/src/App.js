@@ -7,6 +7,7 @@ import RequireAuth from './components/RequireAuth';
 import LogIn from './pages/LogIn';
 import Layout from './components/Layout';
 import ComicsTest from './pages/ComicsTest';
+import Demo from './pages/Demo';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Home/>} />
           <Route path="/public" element={<Public/>} />
           <Route path="/login" element={<LogIn/>} />
+          <Route path="/demo" element={<Demo/>} />
           <Route element={<RequireAuth/>} >
             <Route path="/test" element={<ComicsTest/>} />
             <Route path="/protected" element={<Protected/>} />

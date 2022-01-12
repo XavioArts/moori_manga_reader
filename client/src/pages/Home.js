@@ -43,6 +43,7 @@ const Home = () => {
             <button onClick={()=>navigate("/login")} >Log In</button>
             <button onClick={()=>auth.handleLogout(navigate)} >Log Out</button>
             <button onClick={()=>navigate("/test")}>Comics Test</button>
+            <button onClick={()=>navigate("/demo")}>Image demo</button>
             <br/>
             <button onClick={getComics} >Get user comics</button>
             {comics && 

@@ -1,9 +1,8 @@
 # README
 
-# Basic Project template
-This is a starting project set up with rails 6 api back end and react front end.
-
-## Included: 
+# Moori Manga Reader
+Welcome to the Moori Manga Reader! This is a personal project I started as a way to showcase my web comics but with a commnity aspect similar to steam. If it goes well I would love to open it up to other creators to publish their comics and offer various rewards through digital cards and badges.
+## Included so far: 
 - devise_token_auth
 - faker
 - pry rails
@@ -13,42 +12,7 @@ This is a starting project set up with rails 6 api back end and react front end.
 - devise-axios
 - basic user functionality (login, logout, register)
 - Stubbed out navbar and pages
-
-## Set up instructions:
-
-- clone down project
-```
-    git clone git@github.com:XavioArts/project_template-2021.git <project_name>
-```
-
-- in <project_name>
-```
-    bundle
-```
-- rename database. in database.yml
-```
-    replace all instances of "project_template" with "<project_name>"
-```
-- create new database
-```
-    rails db:create db:migrate db:seed
-```
-- cd into client
-```
-    yarn
-```
-- then remove the git remote
-```
-    git remote rm origin
-```
-- add new git remote
-- DONE
-
-- To run the servers
-```
-    $<project_name> rails s -p 3001 
-    $client yarn start
-```
+- Filepond (might not use)
 
 ## Adding 3rd party libraries
 
