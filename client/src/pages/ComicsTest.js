@@ -140,6 +140,15 @@ const ComicsTest = () => {
                 </div>}
             <br/>
             <hr/>
+            <button onClick={getComics} >Get all comics</button>
+            {comics && 
+                <div>
+                    <hr/>
+                    {JSON.stringify(comics)}
+                    <hr/>
+                </div>}
+            <br/>
+            <hr/>
             <h3>Create a comic</h3>
             <form onSubmit={handleSubmit} >
                 <label>Title:</label>
