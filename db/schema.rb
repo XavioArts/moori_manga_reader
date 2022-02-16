@@ -121,7 +121,7 @@ ActiveRecord::Schema.define(version: 2022_01_07_000415) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "role"
+    t.string "role", default: "Reader"
     t.integer "points"
     t.text "badges"
     t.text "cards"
