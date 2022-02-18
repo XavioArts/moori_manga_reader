@@ -1,6 +1,6 @@
 class Api::CommentsController < ApplicationController
     ##This will be a bit more complicated
-    ##will need to make more changes
+    ##will need to make more changes /////// might be done
 
     before_action :authenticate_user!
     before_action :set_chapter
