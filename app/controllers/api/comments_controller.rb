@@ -8,6 +8,7 @@ class Api::CommentsController < ApplicationController
 
     def index
         render json: @chapter.comments 
+        ## will need a custom sql call
     end
 
     def show 
@@ -15,7 +16,6 @@ class Api::CommentsController < ApplicationController
     end
 
     def create
-        ## Will need to adjust this to include image upload
         @comment = @chapter.comments.new(comment_params)
         if @comment.save
             render json: @comment

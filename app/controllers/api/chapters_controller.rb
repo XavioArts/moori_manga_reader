@@ -9,7 +9,8 @@ class Api::ChaptersController < ApplicationController
     end
 
     def show 
-        render json: @chapter, include: [:pages]
+        ## get rid of comments vvvv ##
+        render json: @chapter, include: [:pages, :comments] 
     end
 
     def create

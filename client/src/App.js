@@ -8,6 +8,7 @@ import LogIn from './pages/LogIn';
 import Layout from './components/Layout';
 import ComicsTest from './pages/ComicsTest';
 import Demo from './pages/Demo';
+import ControllerTest from './pages/ContollerTest';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/demo" element={<Demo/>} />
           <Route element={<RequireAuth/>} >
             <Route path="/test" element={<ComicsTest/>} />
+            <Route path="/cont_test" element={<ControllerTest/>} />
             <Route path="/protected" element={<Protected/>} />
           </Route>
         </Route>
