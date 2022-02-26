@@ -2,8 +2,13 @@ import axios from "axios";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
+import { getUsers } from "../actions";
+import { useDispatch, useSelector } from "react-redux";
 
 const Home = () => {
+
+    const dispatch = useDispatch();
+    const users = useSelector(state => state.users.users)
 
     const auth = useContext(AuthContext);
     const navigate = useNavigate();
@@ -60,6 +65,11 @@ const Home = () => {
                     <p>{JSON.stringify(favorites)}</p>
                     <hr/>
                 </div>}
+            <button onClick={()=>dispatch(getUsers())} >Test Redux Saga Dispatch</button>
+            <br/>
+            <h1>Redux Store:</h1>
+            <hr/>
+            {JSON.stringify(users)}
         </div>
     );
 };

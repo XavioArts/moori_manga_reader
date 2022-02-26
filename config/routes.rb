@@ -15,5 +15,6 @@ Rails.application.routes.draw do
     get "comics_full", to: "comics#comics_full"
     resources :favorites
     resources :publications
+    get "users", to: "users#index"
   end
 end

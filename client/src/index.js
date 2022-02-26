@@ -11,6 +11,8 @@ import store from './store';
 
 initMiddleware();
 
+// may need to switch authprovider and provider
+
 ReactDOM.render(
   <AuthProvider>
     <Provider store={store} >
