@@ -10,8 +10,8 @@ function* handleGetUsers() {
     }
 }
 
-function* watcherUserSaga() {
+function* watcherUsersSaga() {
     yield takeEvery("GET_USERS_REQUESTED", handleGetUsers)
 }
 
-export default watcherUserSaga;
+export default watcherUsersSaga;

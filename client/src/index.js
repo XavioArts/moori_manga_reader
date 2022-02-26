@@ -14,13 +14,13 @@ initMiddleware();
 // may need to switch authprovider and provider
 
 ReactDOM.render(
-  <AuthProvider>
-    <Provider store={store} >
+  <Provider store={store} >
+    <AuthProvider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </Provider>
-  </AuthProvider>,
+    </AuthProvider>
+  </Provider>,
   document.getElementById('root')
 );
 
