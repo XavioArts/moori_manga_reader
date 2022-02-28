@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser, loginUser, toggleCheckAuth } from "../actions";
+import { getUser, loginUser, logoutUser, toggleCheckAuth } from "../actions";
 
 export const AuthContext = React.createContext();
 // only need the AuthContext as we will use the useContext hook
@@ -78,15 +78,17 @@ const AuthProvider = (props) => {
 
     const handleLogout = async (navigate) => {
         // axios call to log out
-        try {
-            let res = await axios.delete("/api/auth/sign_out");
-            console.log(res);
-            // setUser(null);
-            navigate("/");
-        } catch (err) {
-            console.log(err.response);
-            alert("an error occurred logging out");
-        }
+        dispatch(logoutUser());
+        navigate("/login");
+        // try {
+        //     let res = await axios.delete("/api/auth/sign_out");
+        //     console.log(res);
+        //     // setUser(null);
+        //     navigate("/");
+        // } catch (err) {
+        //     console.log(err.response);
+        //     alert("an error occurred logging out");
+        // }
     };
 
     // const handleUpdate = async (user, navigate) => {

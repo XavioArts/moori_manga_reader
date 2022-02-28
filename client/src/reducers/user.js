@@ -3,7 +3,6 @@ const initialState = {
     loading: false,
     error: null,
     checkingAuthStatus: true,
-    submittedUser: null,
 }
 
 const user = (state = initialState, action) => {
@@ -17,15 +16,15 @@ const user = (state = initialState, action) => {
         case "TOGGLE_CHECK_AUTH_STATUS":
             return {...state, checkingAuthStatus: !state.checkingAuthStatus}
         case "LOGIN_USER_REQUESTED":
-            return {...state, loading: true, submittedUser: action.submittedUser}
+            return {...state, loading: true}
         case "LOGIN_USER_SUCCESS":
-            return {...state, loading: false, user: action.user, error: null, submittedUser: null}
+            return {...state, loading: false, user: action.user, error: null}
         case "LOGIN_USER_FAILED":
-            return {...state, loading: false, error: action.message, submittedUser: null}
+            return {...state, loading: false, error: action.message}
         case "LOGOUT_USER_REQUESTED":
             return {...state, loading: true}
         case "LOGOUT_USER_SUCCESS":
-            return {...state, loading: false, user: action.user, error: null}
+            return {...state, loading: false, user: null, error: null}
         case "LOGOUT_USER_FAILED":
             return {...state, loading: false, error: action.message}
         case "REGISTER_USER_REQUESTED":

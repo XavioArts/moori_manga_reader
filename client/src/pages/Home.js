@@ -9,15 +9,13 @@ const Home = () => {
 
     const dispatch = useDispatch();
     const users = useSelector(state => state.users.users)
+    const user = useSelector(state => state.user.user)
 
     const auth = useContext(AuthContext);
     const navigate = useNavigate();
     const [comics, setComics] = useState(null);
     const [favorites, setFavorites] = useState(null);
 
-    // const logOut = (e) => {
-    //     e.preventDefault()
-    // }
     const getComics = async (e) => {
         e.preventDefault()
         try {
@@ -65,10 +63,13 @@ const Home = () => {
                     <p>{JSON.stringify(favorites)}</p>
                     <hr/>
                 </div>}
-            <button onClick={()=>dispatch(getUsers())} >Test Redux Saga Dispatch</button>
+            <button onClick={()=>dispatch(getUsers())} >Dispatch Get Users</button>
             <br/>
             <h1>Redux Store:</h1>
             <hr/>
+            <h4>User (logged in):</h4>
+            {JSON.stringify(user)}
+            <h4>Users: (for testing purposes)</h4>
             {JSON.stringify(users)}
         </div>
     );
