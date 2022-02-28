@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser, toggleCheckAuth } from "../actions";
+import { getUser, loginUser, toggleCheckAuth } from "../actions";
 
 export const AuthContext = React.createContext();
 // only need the AuthContext as we will use the useContext hook
@@ -61,31 +61,33 @@ const AuthProvider = (props) => {
     //     }
     // };
 
-    // const handleLogin = async (user, navigate) => {
-    //     // axios call to log in user
-    //     try {
-    //         let res = await axios.post("/api/auth/sign_in", user);
-    //         console.log(res.data);
-    //         setUser(res.data.data);
-    //         navigate("/");
-    //     } catch (err) {
-    //         console.log(err.response);
-    //         alert("An error occurred logging in");
-    //     }
-    // };
+    const handleLogin = async (user, navigate) => {
+        // axios call to log in user
+        dispatch(loginUser(user));
+        navigate("/");
+        // try {
+        //     let res = await axios.post("/api/auth/sign_in", user);
+        //     console.log(res.data);
+        //     setUser(res.data.data);
+        //     navigate("/");
+        // } catch (err) {
+        //     console.log(err.response);
+        //     alert("An error occurred logging in");
+        // }
+    };
 
-    // const handleLogout = async (navigate) => {
-    //     // axios call to log out
-    //     try {
-    //         let res = await axios.delete("/api/auth/sign_out");
-    //         console.log(res);
-    //         setUser(null);
-    //         navigate("/");
-    //     } catch (err) {
-    //         console.log(err.response);
-    //         alert("an error occurred logging out");
-    //     }
-    // };
+    const handleLogout = async (navigate) => {
+        // axios call to log out
+        try {
+            let res = await axios.delete("/api/auth/sign_out");
+            console.log(res);
+            // setUser(null);
+            navigate("/");
+        } catch (err) {
+            console.log(err.response);
+            alert("an error occurred logging out");
+        }
+    };
 
     // const handleUpdate = async (user, navigate) => {
     //     try {
@@ -117,8 +119,8 @@ const AuthProvider = (props) => {
             authenticated: user !== null,
             // setUser,
             // handleRegister,
-            // handleLogin,
-            // handleLogout,
+            handleLogin,
+            handleLogout,
             // handleDelete,
             // handleUpdate,
             checkingAuthStatus,
