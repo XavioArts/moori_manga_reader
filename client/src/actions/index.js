@@ -24,15 +24,17 @@ export const logoutUser = () => {
     }
 }
 
-export const registerUser = () => {
+export const registerUser = (submittedUser) => {
     return {
         type: "REGISTER_USER_REQUESTED",
+        submittedUser,
     }
 }
 
-export const updateUser = () => {
+export const updateUser = (submittedUser) => {
     return {
         type: "UPDATE_USER_REQUESTED",
+        submittedUser,
     }
 }
 

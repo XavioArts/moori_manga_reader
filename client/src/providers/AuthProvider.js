@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser, loginUser, logoutUser, toggleCheckAuth } from "../actions";
+import { deleteUser, getUser, loginUser, logoutUser, registerUser, toggleCheckAuth, updateUser } from "../actions";
 
 export const AuthContext = React.createContext();
 // only need the AuthContext as we will use the useContext hook
@@ -48,18 +48,21 @@ const AuthProvider = (props) => {
 
     ///// |||||| THESE WILL NEED TO CONVERT TO REDUX ||||||
     ///// vvvvvv                                     vvvvvv
+    ////////////     DONE       /////////////////
 
-    // const handleRegister = async (user, navigate) => {
-    //     // axios call to register new user
-    //     try {
-    //         let res = await axios.post("/api/auth", user);
-    //         setUser(res.data.data);
-    //         navigate("/");
-    //     } catch (err) {
-    //         console.log(err.response);
-    //         alert("An error occurred registering user");
-    //     }
-    // };
+    const handleRegister = async (user, navigate) => {
+        // axios call to register new user
+        dispatch(registerUser(user))
+        navigate("/");
+        // try {
+        //     let res = await axios.post("/api/auth", user);
+        //     setUser(res.data.data);
+        //     navigate("/");
+        // } catch (err) {
+        //     console.log(err.response);
+        //     alert("An error occurred registering user");
+        // }
+    };
 
     const handleLogin = async (user, navigate) => {
         // axios call to log in user
@@ -91,40 +94,44 @@ const AuthProvider = (props) => {
         // }
     };
 
-    // const handleUpdate = async (user, navigate) => {
-    //     try {
-    //         let res = await axios.put("/api/auth", user);
-    //         console.log(res.data);
-    //         setUser(res.data.data);
-    //         navigate("/");
-    //     }   catch (err) {
-    //         console.log(err.response);
-    //         alert("an error occurred updating user")
-    //     }
-    // }
+    const handleUpdate = async (user, navigate) => {
+        dispatch(updateUser(user));
+        navigate("/");
+        // try {
+        //     let res = await axios.put("/api/auth", user);
+        //     console.log(res.data);
+        //     setUser(res.data.data);
+        //     navigate("/");
+        // }   catch (err) {
+        //     console.log(err.response);
+        //     alert("an error occurred updating user")
+        // }
+    }
 
-    // const handleDelete = async (navigate) => {
-    //     try {
-    //         let res = await axios.delete("/api/auth")
-    //         console.log(res);
-    //         setUser(null);
-    //         navigate("/public");
-    //     } catch (err) {
-    //         console.log(err.response);
-    //         alert("there was an error deleting your account");
-    //     }
-    // }
+    const handleDelete = async (navigate) => {
+        dispatch(deleteUser());
+        navigate("/login");
+        // try {
+        //     let res = await axios.delete("/api/auth")
+        //     console.log(res);
+        //     setUser(null);
+        //     navigate("/public");
+        // } catch (err) {
+        //     console.log(err.response);
+        //     alert("there was an error deleting your account");
+        // }
+    }
 
     return (
         <AuthContext.Provider value={{
             ...user,
             authenticated: user !== null,
             // setUser,
-            // handleRegister,
+            handleRegister,
             handleLogin,
             handleLogout,
-            // handleDelete,
-            // handleUpdate,
+            handleDelete,
+            handleUpdate,
             checkingAuthStatus,
         }} >
             {props.children}
