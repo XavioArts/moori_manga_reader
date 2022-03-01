@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from "redux-saga/effects";
+import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
 import getUser from "../requests/getUser";
 
 
@@ -13,7 +13,7 @@ function* handleGetUser() {
 }
 
 function* watcherGetUser() {
-    yield takeEvery("GET_USER_REQUESTED", handleGetUser)
+    yield takeLatest("GET_USER_REQUESTED", handleGetUser)
 }
 
 export default watcherGetUser;

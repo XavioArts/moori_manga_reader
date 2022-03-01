@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from "redux-saga/effects";
+import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
 import registerUser from "../requests/registerUser";
 
 
@@ -12,6 +12,6 @@ function* handleRegisterUser(action) {
 }
 
 function* watcherRegisterUser() {
-    yield takeEvery("REGISTER_USER_REQUESTED", handleRegisterUser)
+    yield takeLatest("REGISTER_USER_REQUESTED", handleRegisterUser)
 }
 export default watcherRegisterUser;

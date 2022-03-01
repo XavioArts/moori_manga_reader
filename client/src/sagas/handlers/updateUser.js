@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from "redux-saga/effects";
+import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
 import updateUser from "../requests/updateUser";
 
 function* handleUpdateUser(action) {
@@ -11,6 +11,6 @@ function* handleUpdateUser(action) {
 }
 
 function* watcherUpdateUser() {
-    yield takeEvery("UPDATE_USER_REQUESTED", handleUpdateUser)
+    yield takeLatest("UPDATE_USER_REQUESTED", handleUpdateUser)
 }
 export default watcherUpdateUser;

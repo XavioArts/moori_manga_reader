@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from "redux-saga/effects";
+import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
 import loginUser from "../requests/loginUser";
 
 
@@ -12,6 +12,6 @@ function* handleLoginUser(action) {
 }
 
 function* watcherLoginUser() {
-    yield takeEvery("LOGIN_USER_REQUESTED", handleLoginUser)
+    yield takeLatest("LOGIN_USER_REQUESTED", handleLoginUser)
 }
 export default watcherLoginUser;
