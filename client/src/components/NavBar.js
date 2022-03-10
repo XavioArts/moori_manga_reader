@@ -6,7 +6,7 @@ import { AppstoreOutlined, BookOutlined, EllipsisOutlined, GlobalOutlined, Inser
 
 const NavBar = () => {
 
-    const { authenticated } = useContext(AuthContext);
+    const { authenticated, handleLogout } = useContext(AuthContext);
     const [current, setCurrent] = useState("");
     const location = useLocation();
     const navigate = useNavigate();
@@ -18,6 +18,11 @@ const NavBar = () => {
 
     const handleClick = (e) => {
         console.log("click", e);
+        if (e.key === "logout") {
+            handleLogout(navigate);
+            setCurrent("/login");
+            return
+        }
         setCurrent(e.key);
         navigate(e.key);
     }
