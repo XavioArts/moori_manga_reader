@@ -1,7 +1,9 @@
 import { all } from "redux-saga/effects";
 import watcherDeleteUser from "./handlers/deleteUser";
 import watcherUsersSaga from "./handlers/fetchUsers";
+import watcherGetAllComics from "./handlers/getAllComics";
 import watcherGetUser from "./handlers/getUser";
+import watcherGetUserComics from "./handlers/getUserComics";
 import watcherLoginUser from "./handlers/loginUser";
 import watcherLogoutUser from "./handlers/logoutUser";
 import watcherRegisterUser from "./handlers/registerUser";
@@ -16,5 +18,7 @@ export default function* rootSaga() {
         watcherDeleteUser(),
         watcherRegisterUser(),
         watcherUpdateUser(),
+        watcherGetAllComics(),
+        watcherGetUserComics(),
     ]);
 }

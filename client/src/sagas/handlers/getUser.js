@@ -7,6 +7,7 @@ function* handleGetUser() {
         console.log("validating token");
         const user = yield call(getUser);
         yield put({type: "GET_USER_SUCCESS", user: user})
+        yield put({type: "GET_USER_COMICS_REQUESTED"})
     } catch (err) {
         yield put({type: "GET_USER_FAILED", message: err.message})
     }

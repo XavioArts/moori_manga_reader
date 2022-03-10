@@ -50,6 +50,16 @@ export const setUser = (user) => {
         user: user,
     }
 }
+export const getUserComics = () => {
+    return {
+        type: "GET_USER_COMICS_REQUESTED",
+    }
+}
+export const getAllComics = () => {
+    return {
+        type: "GET_ALL_COMICS_REQUESTED",
+    }
+}
 
 export const toggleCheckAuth = () => {
     return {

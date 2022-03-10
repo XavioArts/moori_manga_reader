@@ -6,6 +6,7 @@ function* handleRegisterUser(action) {
     try {
         const user = yield call(registerUser,action.submittedUser);
         yield put({type: "REGISTER_USER_SUCCESS", user: user})
+        yield put({type: "GET_USER_COMICS_REQUESTED"})
     } catch (err) {
         yield put({type: "REGISTER_USER_FAILED", message: err.message})
     }

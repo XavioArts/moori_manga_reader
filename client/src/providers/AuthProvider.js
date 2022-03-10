@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteUser, getUser, loginUser, logoutUser, registerUser, toggleCheckAuth, updateUser } from "../actions";
+import { deleteUser, getAllComics, getUser, getUserComics, loginUser, logoutUser, registerUser, toggleCheckAuth, updateUser } from "../actions";
 
 export const AuthContext = React.createContext();
 // only need the AuthContext as we will use the useContext hook
@@ -23,6 +23,8 @@ const AuthProvider = (props) => {
 
     useEffect(()=>{
         getUserToRedux();
+        // all comics and the store will always be got on mount
+        dispatch(getAllComics());
     },[]);
 
     const getUserToRedux = async () => {
@@ -32,7 +34,7 @@ const AuthProvider = (props) => {
             dispatch(toggleCheckAuth());
             return;
         }
-        dispatch(getUser())
+        dispatch(getUser());
         // try {
         //     console.log("validating token");
         //     const res = await axios.get("/api/auth/validate_token");

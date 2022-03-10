@@ -1,6 +1,6 @@
 class Api::ComicsController < ApplicationController
 
-    before_action :authenticate_user!
+    before_action :authenticate_user!, except: [:comics_full]
     before_action :set_comic, only: [:show, :update, :destroy]
 
     def index
