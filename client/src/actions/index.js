@@ -44,6 +44,13 @@ export const deleteUser = () => {
     }
 }
 
+export const setUser = (user) => {
+    return {
+        type: "SET_USER",
+        user: user,
+    }
+}
+
 export const toggleCheckAuth = () => {
     return {
         type: "TOGGLE_CHECK_AUTH_STATUS",

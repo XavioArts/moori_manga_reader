@@ -7,6 +7,8 @@ const initialState = {
 
 const user = (state = initialState, action) => {
     switch(action.type) {
+        case "SET_USER":
+            return {...state, user: action.user}
         case "GET_USER_REQUESTED":
             return {...state, loading: true}
         case "GET_USER_SUCCESS":

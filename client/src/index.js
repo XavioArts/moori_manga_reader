@@ -8,6 +8,7 @@ import AuthProvider from './providers/AuthProvider';
 import { initMiddleware } from "devise-axios";
 import { Provider } from 'react-redux';
 import store from './store';
+import 'antd/dist/antd.css';
 
 initMiddleware();
 

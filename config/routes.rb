@@ -16,5 +16,6 @@ Rails.application.routes.draw do
     resources :favorites
     resources :publications
     get "users", to: "users#index"
+    post "users/image", to: "users#profile_upload"
   end
 end
