@@ -55,6 +55,12 @@ export const getUserComics = () => {
         type: "GET_USER_COMICS_REQUESTED",
     }
 }
+
+export const clearUserComics = () => {
+    return {
+        type: "CLEAR_USER_COMICS",
+    }
+}
 export const getAllComics = () => {
     return {
         type: "GET_ALL_COMICS_REQUESTED",

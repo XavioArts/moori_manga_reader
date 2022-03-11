@@ -21,6 +21,8 @@ const comics = (state = initialState, action) => {
             return {...state, loading: false, publications: action.publications, library: action.library, error: null}
         case "GET_USER_COMICS_FAILED":
             return {...state, loading: false, error: action.message, checkingAuthStatus: false}
+        case "CLEAR_USER_COMICS":
+            return {...state, publications: null, library: null}
         // will need update and delete
         default:
             return state;
