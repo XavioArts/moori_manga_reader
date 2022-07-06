@@ -1,6 +1,31 @@
+import { Button } from "antd";
 import React from "react";
+import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-const Publications = () => {
+const Publications = (props) => {
+
+    const { publications } = props;
+    const navigate = useNavigate();
+
+    const renderPublications = () => {
+        if (publications.length === 0) {
+            return <p>No publications, let's make your first comic!</p>
+        } else {
+            return publications.map((p)=> {
+                return (
+                    <div>
+                        <h2>{p.title}</h2>
+                        <h4>{p.author}</h4>
+                        <p>View/Select Button</p>
+                        <p>Edit Button</p>
+                        <p>Delete Button</p>
+                    </div>
+                )
+            })
+        }
+    }
+
     return (
         <div>
             <h1>Publications page</h1>
@@ -12,8 +37,17 @@ const Publications = () => {
                 -create a new chapter, edit a chapter
                 -edit store for each comic(crud on cards and badges)
             </p>
+            <hr/>
+            <div>
+                <Button type="primary" onClick={()=>navigate("/publications/new")} >Create a new comic!</Button>
+            </div>
+            {renderPublications()}
         </div>
     )
 }
 
-export default Publications;
+const mapStateToProps = (state) => {
+    return {publications: state.comics.publications}
+}
+
+export default connect(mapStateToProps)(Publications);

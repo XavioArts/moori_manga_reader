@@ -9,6 +9,7 @@ import Publications from './pages/Publications';
 import Explore from './pages/Explore';
 import StorePage from './pages/Store';
 import Library from './pages/Library';
+import NewComic from './pages/NewComic';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route element={<RequireAuth/>} >
             <Route path="/" element={<Dashboard/>} />
             <Route path="/publications" element={<Publications/>} />
+            <Route path="/publications/new" element={<NewComic/>} />
             <Route path="/profile" element={<Protected/>} />
             <Route path="/library" element={<Library/>} />
           </Route>

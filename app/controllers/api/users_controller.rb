@@ -10,7 +10,7 @@ class Api::UsersController < ApplicationController
     def profile_upload
         
         file = params[:file]
-        file2 = params[:avatar]
+        # file2 = params[:avatar]
         p file 
 
         if file 

@@ -6,6 +6,7 @@ import watcherGetUser from "./handlers/getUser";
 import watcherGetUserComics from "./handlers/getUserComics";
 import watcherLoginUser from "./handlers/loginUser";
 import watcherLogoutUser from "./handlers/logoutUser";
+import watcherPublishComic from "./handlers/publishComic";
 import watcherRegisterUser from "./handlers/registerUser";
 import watcherUpdateUser from "./handlers/updateUser";
 
@@ -20,5 +21,6 @@ export default function* rootSaga() {
         watcherUpdateUser(),
         watcherGetAllComics(),
         watcherGetUserComics(),
+        watcherPublishComic(),
     ]);
 }

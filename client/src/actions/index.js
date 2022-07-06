@@ -72,3 +72,10 @@ export const toggleCheckAuth = () => {
         type: "TOGGLE_CHECK_AUTH_STATUS",
     }
 }
+
+export const publishComic = (comic) => {
+    return {
+        type: "PUBLISH_COMIC_REQUESTED",
+        comic,
+    }
+}
