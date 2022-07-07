@@ -2,6 +2,7 @@ import { Button } from "antd";
 import React from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { ComicContainer } from "../components/Styles";
 
 const Publications = (props) => {
 
@@ -14,13 +15,14 @@ const Publications = (props) => {
         } else {
             return publications.map((p)=> {
                 return (
-                    <div>
+                    <ComicContainer key={p.id} >
                         <h2>{p.title}</h2>
                         <h4>{p.author}</h4>
                         <p>View/Select Button</p>
                         <p>Edit Button</p>
                         <p>Delete Button</p>
-                    </div>
+                        <p>This is where statistical data will go</p>
+                    </ComicContainer>
                 )
             })
         }

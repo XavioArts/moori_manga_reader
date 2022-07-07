@@ -6,7 +6,7 @@ const url2 = "/api/favorites";
 const getUserComics = async () => {
         let res = await axios.get(url);
         let res2 = await axios.get(url2);
-        return {library: res.data, publications: res2.data};
+        return {library: res2.data, publications: res.data};
 }
 
 export default getUserComics;
