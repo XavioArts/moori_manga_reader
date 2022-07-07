@@ -1,15 +1,18 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { publishComic } from "../actions";
 
 const NewComic = () => {
 
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
+    const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         let newComic = {title: title, author: author};
-        publishComic(newComic);
+        console.log(newComic);
+        dispatch(publishComic(newComic));
         // try {
         //     // let comicRes = await axios.post("/api/comics", newComic);
         //     // setNewComic(comicRes.data)
